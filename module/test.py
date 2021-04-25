@@ -1,0 +1,7 @@
+import BlagueApi
+
+token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMzI0OTQxNDcyMzY3NjQwNTk2IiwibGltaXQiOjEwMCwia2V5IjoiRG5WcjVIZ3RHMUxHOVNoR0xtMFNDTnZ4VGxIWWNUVjQyUjZ3cDEyZ2FrNXVzQVNRZW8iLCJjcmVhdGVkX2F0IjoiMjAyMS0wNC0yNVQxMDozNzo0MSswMDowMCIsImlhdCI6MTYxOTM0NzA2MX0.MuVjnc_nGnAusckN1xiTF5_n3NiF2z4Hbz6N9nslbJc'
+
+joke = BlagueApiFr.Joke(token)
+
+print(joke.get_blague_exclu_genre_strict("dev","global"))
