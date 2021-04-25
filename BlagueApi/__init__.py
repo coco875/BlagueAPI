@@ -1,1 +1,1 @@
-import BlagueApi
+from BlagueApifr import *
