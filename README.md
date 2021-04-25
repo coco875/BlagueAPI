@@ -45,7 +45,7 @@ Vous pouvez aussi avoir une version plus stricte.
 joke.get_blague_genre("dev")
 ```  
 Il faut indiquer une catégorie exacte que vous pouvez avoir soit en faisant BlagueApi.type_blague ou BlagueApi.noir  
-Voici les autres variables pour les catégories :
+Voici les autres variables pour les catégories :  
 général = 'global'  
 développeur = 'dev'  
 noir = "dark"  
@@ -63,7 +63,7 @@ joke.get_blague_exclu_genre()
 ```
 Similaire à get_blague_genre() mais cette fois il faut mettre les genres qu'on ne veut pas avoir comme réponse.  
 
-Il existe aussi une version stricte:
+Il existe aussi une version stricte:  
 ```py
 joke.get_blague_exclu_genre_strict()
 ```
