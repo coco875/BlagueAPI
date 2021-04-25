@@ -33,19 +33,19 @@ Et pour obtenir les informations c'est :
 ```py
 rep["joke"] #renvoie si on prend l'exemple précédent "Un développeur ne descend pas du métro."
 ```  
-si "id" est >0 alors il y a une érreur faites rep["error"] pour en savoir plus;  
+Si "id" est >0 alors il y a une erreur, faites rep["error"] pour en savoir plus.  
 
-un autre exemple :  
+Un autre exemple :  
 ```py
 joke.get_blague_genre("de")
 ```
-Renverra un blague de type développeur (faite BlagueApi.type_blague pour savoir tout les types) et même si c'est mal écrit il considèrera comme juste tant que ça y ressemble a 75%.  
-vous pouvez aussi avoir une version plus stricte.  
+Renverra un blague de type développeur (faites BlagueApi.type_blague pour savoir tout les types) et même si c'est mal écrit il considèrera comme juste tant que ça y ressemble à 75%.  
+Vous pouvez aussi avoir une version plus stricte.  
 ```py
 joke.get_blague_genre("dev")
 ```  
-il faut indiqué une catégorie éxacte que vous pouvez avoir soit en faisant BlagueApi.type_blague ou BlagueApi.noir  
-voici les autres variables pour les catégories  
+Il faut indiquer une catégorie exacte que vous pouvez avoir soit en faisant BlagueApi.type_blague ou BlagueApi.noir  
+Voici les autres variables pour les catégories :
 général = 'global'  
 développeur = 'dev'  
 noir = "dark"  
@@ -53,17 +53,17 @@ limite = "limit"
 beauf = "beauf"  
 blondes = "blondes"  
 
-vous pouvez trouvez une blague avec son id avec :  
+Vous pouvez trouvez une blague avec son id avec :  
 ```py
 joke.get_blague_id(1)
 ```
-l'id doit être un nombre positif strictement supérieur a 0  
+L'id doit être un nombre positif strictement supérieur à 0  
 ```py
 joke.get_blague_exclu_genre()
 ```
-similaire a get_blague_genre() mais cette fois il faut mettre les genres qu'on ne veut pas avoir comme réponse.  
+Similaire à get_blague_genre() mais cette fois il faut mettre les genres qu'on ne veut pas avoir comme réponse.  
 
-il éxiste aussi une version stricte:
+Il existe aussi une version stricte:
 ```py
 joke.get_blague_exclu_genre_strict()
 ```
