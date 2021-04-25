@@ -60,6 +60,9 @@ class Joke:
                         txt+=f"&disallow={type_detect}"
         txt = ""    
         self.disallow = txt
+    def get_blague(self):
+        rep = requests.get(f"https://www.blagues-api.fr/api/random{self.disallow}", headers = {'Authorization': f'Bearer {self.token}'})
+        return rep.json()
     def get_blague_genre(self,genre=None):
         """permet d'obtenir une blague d'un certain genre même si il y a des fautes dans le type. c'est considérer comme valide si le mot d'après la Distance de Jaro-Winkler (un truc pour savoir la ressemblence) est ressemblant a 75%"""
         if type(genre) is not str:
