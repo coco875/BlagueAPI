@@ -8,7 +8,7 @@ setup(
   author = 'coco875',                   # Type in your name
   author_email = 'pereira.jannin@gmail.com',      # Type in your E-Mail
   url = 'https://github.com/coco875/BlagueAPI',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/coco875/BlagueAPI/archive/refs/tags/v_01.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/coco875/BlagueAPI/archive/refs/tags/v_02.tar.gz',    # I explain this later on
   keywords = ['API', 'Joke', 'French'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'jaro-winkler',
