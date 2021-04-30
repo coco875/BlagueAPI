@@ -17,7 +17,7 @@ joke = BlagueApi.Joke("TOKEN")
 Le token est à obtenir sur [BlagueApi](https://www.blagues-api.fr/)  
 
 ```py
-joke.get_blague_genre()
+joke.get_joke_type()
 ```
 Renvoie une blague aléatoire :  
 Renvoie un dictionaire de type :  
@@ -37,14 +37,14 @@ Si "id" est >0 alors il y a une erreur, faites rep["error"] pour en savoir plus.
 
 Un autre exemple :  
 ```py
-joke.get_blague_genre("de")
+joke.get_joke_type("de")
 ```
-Renverra un blague de type développeur (faites BlagueApi.type_blague pour savoir tout les types) et même si c'est mal écrit il considèrera comme juste tant que ça y ressemble à 75%.  
+Renverra un blague de type développeur (faites BlagueApi.type_joke pour savoir tout les types) et même si c'est mal écrit il considèrera comme juste tant que ça y ressemble à 75%.  
 Vous pouvez aussi avoir une version plus stricte.  
 ```py
-joke.get_blague_genre("dev")
+joke.get_joke_type("dev")
 ```  
-Il faut indiquer une catégorie exacte que vous pouvez avoir soit en faisant BlagueApi.type_blague ou BlagueApi.noir  
+Il faut indiquer une catégorie exacte que vous pouvez avoir soit en faisant BlagueApi.type_joke ou BlagueApi.noir  
 Voici les autres variables pour les catégories :  
 général = 'global'  
 développeur = 'dev'  
@@ -55,15 +55,15 @@ blondes = "blondes"
 
 Vous pouvez trouvez une blague avec son id avec :  
 ```py
-joke.get_blague_id(1)
+joke.get_joke_id(1)
 ```
 L'id doit être un nombre positif strictement supérieur à 0  
 ```py
-joke.get_blague_exclu_genre()
+joke.get_joke_exclu_type()
 ```
-Similaire à get_blague_genre() mais cette fois il faut mettre les genres qu'on ne veut pas avoir comme réponse.  
+Similaire à get_joke_genre() mais cette fois il faut mettre les genres qu'on ne veut pas avoir comme réponse.  
 
 Il existe aussi une version stricte:  
 ```py
-joke.get_blague_exclu_genre_strict()
+joke.get_joke_exclu_type_strict()
 ```
