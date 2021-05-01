@@ -50,7 +50,7 @@ class Jokes:
             rep = requests.get(f"https://www.blagues-api.fr/api/id/{str(_id)}", headers={
                                'Authorization': f'Bearer {self.token}'})
             return rep.json()
-        return {"id": -1, "error": "entré un nombre"}
+        return {"id": -1, "error": "Merci de ne pas entrer un identifiant avec un nombre négatif (-1)."}
 
     def random_without(self, *args):
         """get jokes without a specific type"""
