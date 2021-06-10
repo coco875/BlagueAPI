@@ -1,4 +1,4 @@
-# BlagueAPI
+# BlaguesAPI
 
 API python for jokes in French  
 As the API is made for french people the rest of readme will be in french  
@@ -11,7 +11,7 @@ Pour l'installer, éxécuter la ligne ci-dessous dans le terminal
 Pour l'importer, faites juste :
 
 ```py
-import BlagueApi
+import BlaguesApi
 ```
 
 Pour initialiser :
@@ -57,53 +57,59 @@ print(response)
 #   "joke": "Un développeur ne descend pas du métro.",
 #   "answer": "Il libère la RAM..."
 # }
-# renvoie quelque chose de similaire
+# renvoie ce 'dictionnaire' (c'est une class encore différent que une liste mais similaire)
 print(response["joke"]) # renvoie Un développeur ne descend pas du métro.
 print(response["answer"]) # renvoie Il libère la RAM...
 ```
 
-pour réavoir une autre blague il faut a nouveau définir response donc mettre response = joke.random()
+pour réavoir une autre blague il faut a nouveau définir response donc remettre response = joke.random()
 
-Si "id" est > 0 alors il y a une erreur, faites response["error"] pour en savoir plus.
+Si "id" est < 0 alors il y a une erreur, faites response["error"] pour en savoir plus.
 
-Un autre exemple :
-
-```py
-joke.get_joke_type("de")
-```
-
-Renverra un blague de type développeur (faites BlagueApi.type_joke pour savoir tout les types) et même si c'est mal écrit il considèrera comme juste tant que ça y ressemble à 75%.  
-Vous pouvez aussi avoir une version plus stricte.
+autre fonctionalité:
 
 ```py
-joke.get_joke_type("dev")
+Joke.random_categorized(BlaguesApi.Types.DEV)
 ```
+Renvoie une blague aléatoire dans la catégorie
 
-Il faut indiquer une catégorie exacte que vous pouvez avoir soit en faisant BlagueApi.Types ou BlagueApi.Types.DARK  
+Il faut indiquer une catégorie exacte que vous pouvez avoir soit en faisant BlaguesApi.JokeTypes (vous obtener une liste) ou BlaguesApi.Types.DARK pour avoir le thème noir
 Voici les autres variables pour les catégories :  
-général = 'global'  
-développeur = 'dev'  
-noir = "dark"  
-limite = "limit"  
-beauf = "beauf"  
-blondes = "blondes"
+GLOBAL = 'global'
+DEV = 'dev'
+DARK = "dark"
+LIMIT = "limit"
+BEAUF = "beauf"
+BLONDES = "blondes"
+
+vous pouvez faire en sorte qu'il accepte même si c'est pas exacte en remplacent `Jokes = BlaguesApi.Jokes('TOKEN')` par `Jokes = BlaguesApi.JokesAround('TOKEN')`
+
+exemple:
+```py
+import BlaguesApi
+
+Jokes = BlaguesApi.JokesAround('TOKEN') #initialisation en approximatif 
+categorie = ""
+
+while categorie != "exit": # permet de quitter la boucle quand on marque exit
+    categorie = input("De quel catégorie vous voulez la blague : ")
+    response = Jokes.random_categorized(categorie)
+    if response['id'] < 0:
+        print(response['error'])
+    else:
+        print(f"Blague : {response['joke']}\nréponse : {response['answer']}")
+```
 
 Vous pouvez trouvez une blague avec son id avec :
+L'id doit être un nombre positif strictement supérieur à 0
 
 ```py
 Jokes.from_id(1)
 ```
 
-L'id doit être un nombre positif strictement supérieur à 0
+Vous pouvez aussi avoir une blague aléatoire mais en excluant une catégorie
 
 ```py
-Jokes.random_without()
+Jokes.random_without(BlaguesApi.Types.DARK)
 ```
-
-Similaire à get_joke_genre() mais cette fois il faut mettre les genres qu'on ne veut pas avoir comme réponse.
-
-Il existe aussi une version stricte:
-
-```py
-joke.get_joke_exclu_type_strict()
-```
+la aussi en indiquent la/les catégorie(s) a enlever et aussi peut être aproximatif si on a définit avec JokesAround
