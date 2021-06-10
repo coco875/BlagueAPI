@@ -20,6 +20,7 @@ def comparaison_proche(mot, liste, ressemblance):
             if aob[0][1] == liste[i[0]]:
                 return liste[i[0]]
         return []
+    return []
 
 class JokesAround:
     def __init__(self, token, ressemblance=0.75, *args):
@@ -66,7 +67,7 @@ class JokesAround:
             else:
                 if self.warn:
                     print(
-                        "Warning: rentré un nom plus rensemblent a un genre existant (vous pouvez savoir la liste a partir de ça BlagueApiFr.JokeTypes)")
+                        "Warning: rentré un nom plus rensemblent a un genre existant (vous pouvez savoir la liste a partir de ça BlaguesApi.JokeTypes)")
                     self.warn = False
                 return {"id": -1, "error": "type non rensemblant a ceux existant"}
 
