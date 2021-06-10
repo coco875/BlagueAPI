@@ -9,8 +9,7 @@ class Jokes:
         self.token = token
         response = requests.get("https://www.blagues-api.fr/api/random",
                                 headers={'Authorization': f'Bearer {self.token}'})
-        result = response.json()
-        if result.get("status") is None:
+        if response.status_code == 401:
             print("Invalid token, program shutdown...")
             sys.exit(-1)
         first = True
@@ -31,7 +30,7 @@ class Jokes:
                            'Authorization': f'Bearer {self.token}'})
         return rep.json()
 
-    def rancom_categorized(self, type_=None):
+    def random_categorized(self, type_=None):
         """get a random joke with a specific type"""
         if not isinstance(type_, str):
             rep = requests.get(f"https://www.blagues-api.fr/api/random{self.disallow}", headers={
@@ -46,7 +45,7 @@ class Jokes:
 
     def from_id(self, _id):
         """get a specific joke by id"""
-        if isinstance(id, int) and _id > 0:
+        if isinstance(_id, int) and _id > 0:
             rep = requests.get(f"https://www.blagues-api.fr/api/id/{str(_id)}", headers={
                                'Authorization': f'Bearer {self.token}'})
             return rep.json()
@@ -59,14 +58,14 @@ class Jokes:
             params = ""
             for i in enumerate(args):
                 for j in JokeTypes:
-                    if first and args[i] == j:
+                    if first and args[i[0]] == j:
                         params += f"?disallow={j}"
                         first = False
-                    elif args[i] == j:
+                    elif args[i[0]] == j:
                         params += f"&disallow={j}"
             rep = requests.get(f"https://www.blagues-api.fr/api/random{params}", headers={
                                'Authorization': f'Bearer {self.token}'})
             return rep.json()
-        rep = requests.get("https://www.blagues-api.fr/api/random",
-                           headers={'Authorization': f'Bearer {self.token}'})
+        rep = requests.get(f"https://www.blagues-api.fr/api/random{self.disallow}", headers={
+                           'Authorization': f'Bearer {self.token}'})
         return rep.json()
